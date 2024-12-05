@@ -19,7 +19,7 @@ export_data()
 ```
 Execution will fail if any of the input folders are empty, or if files are put into incorrect folders, i.e. CRE Microsft Word Alert docx files are put into ARLN Pdf folders, etc.  
 
-Once the import files are correctly sorted run export_data() and the ouput folder will be populated with the csv files from the input data files. 
+Once the import files are correctly sorted, run export_data() and the ouput folder will be populated with the csv files from the input data files. 
 
 For specific file types use any of the singular process_xxx functions. Arguments like PDF_ARLN_DIR and CSV_OUTPUT_DIR are input and output directories respectively.
   ```r
