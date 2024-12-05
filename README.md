@@ -17,7 +17,7 @@ Excel Web Portal files to the EXCEL_ARLN_WEB_PORTAL directory, etc.
 
 For bulk processing of all file types in all folders, sort all the files into the folders and run export_data() from Main.R. 
 
-For specific files use any of the commands in the Main.R, export_data function. 
+For specific files use any of the commands in the Main.R, export_data function with the preferred directories for input and output.
   ```r
   process_tenn_arln(create_tenn_arln(PDF_ARLN_DIR), CSV_OUTPUT_DIR)
   process_word_alert(create_word_alert(WORD_ALERT_DIR), CSV_OUTPUT_DIR)
