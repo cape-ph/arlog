@@ -21,7 +21,7 @@ Execution will fail if any of the input folders are empty, or if files are put i
 
 Once the import files are correctly sorted run export_data() and the ouput folder will be populated with the csv files from the input data files. 
 
-For specific files use any of the singular process_xxx functions. 
+For specific file types use any of the singular process_xxx functions. Arguments like PDF_ARLN_DIR and CSV_OUTPUT_DIR are input and output directories respectively.
   ```r
   # Tennessee ARLN as PDF files
   tenn_arln_df <- create_tenn_arln(PDF_ARLN_DIR)
