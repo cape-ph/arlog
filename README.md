@@ -23,7 +23,7 @@ Once the import files are correctly sorted run export_data() and the ouput folde
 
 For specific files use any of the singular process_xxx functions. 
   ```r
-  # Tennessee ARLN ad PDF files
+  # Tennessee ARLN as PDF files
   tenn_arln_df <- create_tenn_arln(PDF_ARLN_DIR)
   process_tenn_arln(tenn_arln_df, CSV_OUTPUT_DIR)
 
