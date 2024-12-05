@@ -12,8 +12,8 @@ install.packages("arlog")
 ```
 
 ## Usage
-Users should alter the Main.R file such that the files of each type are sorted into their respective type are in the appropriate folders. 
-Excel Web Portal files to the EXCEL_ARLN_WEB_PORTAL directory, etc. 
+Users should alter the Main.R file such that the files of each type are sorted into their respective folders. 
+i.e. Excel Web Portal files to the EXCEL_ARLN_WEB_PORTAL directory, etc. 
 
 For bulk processing of all file types in all folders, sort all the files into the folders and run export_data() from Main.R. 
 
