@@ -1,7 +1,7 @@
 # arlog
 Package to process files for AR Log database creation.
 
-**arlog** is an R package that converts pdf, excel, csv, and docx files and converts the to csv's in anticipation of constructing an SQL database. 
+**arlog** is an R package that converts pdf, excel, csv, and docx files to csv's to facilitate importing into an SQL database. 
 
 ## Installation
 
