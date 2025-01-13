@@ -1,24 +1,60 @@
-create_arlog <- function(CSV_OUTPUT_DIR) {
-  tenn_arln_df <- create_tenn_arln(PDF_ARLN_DIR)
-  tenn_arln_processed = process_tenn_arln(tenn_arln_df)
+#' Create and Combine Data Frames with Date Processing and Join
+#'
+#' This function processes a list of data frames, performs date conversions, and
+#' combines them into a single data frame. It then joins the combined data frame
+#' with another processed data frame (`pdf_cpo_seq_processed`) based on common
+#' columns (`arln_accession_id` and `date_of_collection`).
+#'
+#' @param CSV_OUTPUT_DIR A character string representing the directory path where
+#'   the output will be saved (currently not used in the function, but can be
+#'   included for future extensions).
+#' @param dfs_for_mod A list of data frames that need to be processed. The date
+#'   columns (`date_of_birth` and `date_of_collection`) in these data frames
+#'   will be standardized to a common date format (`ymd`).
+#' @param pdf_cpo_seq_processed A data frame that contains the `COLLECTION_DATE`
+#'   column to be joined with the `date_of_collection` column in the combined data
+#'   frame.
+#'
+#' @return A data frame that is the result of the left join between the combined
+#'   `dfs_for_mod` data frames and `pdf_cpo_seq_processed`, with the common columns
+#'   `arln_accession_id` and `date_of_collection` properly aligned.
+#'
+#' @details This function first processes the list of data frames provided in
+#'   `dfs_for_mod`, converting the `date_of_collection` column to a consistent
+#'   `Date` format using `lubridate::ymd()`. The processed data frames are then
+#'   combined into a single data frame. After that, the function performs a left
+#'   join with the `pdf_cpo_seq_processed` data frame, based on the `arln_accession_id`
+#'   and `date_of_collection` columns.
+#'
+#' @importFrom dplyr bind_rows
+#' @importFrom lubridate ymd
+#'
+#' @examples
+#' # Example usage
+#' processed_dfs <- list(df1, df2, df3)  # Your list of data frames
+#' pdf_cpo_seq <- data.frame(ACCESSION_ID = c(1, 2, 3),
+#'                           COLLECTION_DATE = as.Date(c("2021-01-01", "2021-01-02", "2021-01-03")))
+#' result <- create_arlog(CSV_OUTPUT_DIR = "output_folder", dfs_for_mod = processed_dfs, pdf_cpo_seq_processed = pdf_cpo_seq)
+#'
+#' @seealso \code{\link{dplyr::bind_rows}}, \code{\link{lubridate::ymd}}, \code{\link{dplyr::left_join}}
+create_arlog <- function(CSV_OUTPUT_DIR, dfs_for_mod, pdf_cpo_seq_processed) {
 
+  dfs = process_dates(dfs_for_mod)
 
-  word_alert_df <- create_word_alert(WORD_ALERT_DIR)
-  word_alert_processed = process_word_alert(word_alert_df)
+  combined_df <- dplyr::bind_rows(dfs)
 
+  combined_df <- combined_df %>%
+    mutate(date_of_collection = as.character(date_of_collection)) %>%  # Ensure it's character
+    mutate(date_of_collection = na_if(date_of_collection, 'NA')) %>%  # Replace 'NA' with NA
+    mutate(date_of_collection = lubridate::ymd(combined_df$date_of_collection))  # Convert to Date
 
-  cpo_df <- create_excel_cpo(EXCEL_CPO_DIR)
-  excel_cpo_processed = process_excel_cpo(cpo_df)
+  pdf_cpo <- pdf_cpo_seq_processed %>%
+    mutate(COLLECTION_DATE = lubridate::ymd(COLLECTION_DATE))
 
+  # Perform the left join between combined_df and pdf_cpo
+  joined_df <- combined_df %>%
+    left_join(pdf_cpo, by = c("arln_accession_id" = "ACCESSION_ID",
+                              "date_of_collection" = "COLLECTION_DATE"))
 
-  excel_sentinel_df <- create_sentinel(EXCEL_SENTINEL_DIR)
-  excel_sentinel_processed = process_excel_sentinel(excel_sentinel_df)
-
-
-  pdf_cpo_seq <- create_cpo_seq(PDF_CPO_SEQ_DIR)
-  pdf_cpo_seq_processed = process_pdf_cpo_seq(pdf_cpo_seq)
-
-
-  excel_web_port_df <-create_web_portal(EXCEL_ARLN_WEB_PORTAL_DIR)
-  excel_web_portal_processed = process_web_portal(excel_web_port_df)
-
+  return(joined_df)
+}

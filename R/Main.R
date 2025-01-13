@@ -7,7 +7,7 @@ WORD_ALERT_DIR = "/Users/edonate3/Documents/CAPE/HAI_Data/WordAlert"
 
 CSV_OUTPUT_DIR = "/Users/edonate3/Documents/CAPE/HAI_Processed/"
 
-export_data <- function(CSV_OUTPUT_DIR) {
+export_data <- function(CSV_OUTPUT_DIR, create_arlog_flag = False) {
   tenn_arln_df <- create_tenn_arln(PDF_ARLN_DIR)
   word_alert_df <- create_word_alert(WORD_ALERT_DIR)
   cpo_df <- create_excel_cpo(EXCEL_CPO_DIR)
@@ -41,6 +41,22 @@ export_data <- function(CSV_OUTPUT_DIR) {
   )
 
   write_dfs_to_csv(dfs, CSV_OUTPUT_DIR, filenames)
+
+  if (create_arlog_flag) {
+    ta <- transform_tenn_arln(tenn_arln_processed)
+    wa <- transform_word_alert(word_alert_processed)
+    ecp <- transform_excel_cpo(excel_cpo_processed)
+    esp <- transform_excel_sent(excel_sentinel_processed)
+    ewp <- transform_web_portal(excel_web_portal_processed)
+
+    df_xformed = list(ta, wa, ecp, esp, ewp)
+
+    arlog = create_arlog(CSV_OUTPUT_DIR, df_xformed, pdf_cpo_seq_processed)
+
+    write.csv(arlog, file.path(CSV_OUTPUT_DIR, "arlog.csv"), row.names = FALSE)
+    message(paste("DataFrame ArLog written to", file.path(CSV_OUTPUT_DIR, "arlog.csv")))
+
+  }
 }
 
 

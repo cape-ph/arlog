@@ -11,4 +11,4 @@ Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 7.3.2
 Imports:
   docxtractr, openxlsx, pdftools, stringr, dplyr, magrittr, utils, tibble, 
-  tidyr, rlang, readxl
+  tidyr, rlang, readxl, lubridate
