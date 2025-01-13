@@ -8,11 +8,6 @@
 #'
 #' @return NULL This function writes the CSVs to the provided directory but does not return any value.
 #'
-#' @examples
-#' dfs <- list(df1, df2, df3)  # List of data frames
-#' filenames <- c("file1.csv", "file2.csv", "file3.csv")  # Corresponding filenames
-#' write_dfs_to_csv(dfs, "output_directory", filenames)
-#'
 #' @export
 write_dfs_to_csv <- function(dfs, output_dir, filenames) {
   # Check that the number of filenames matches the number of data frames

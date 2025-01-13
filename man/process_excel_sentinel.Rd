@@ -29,8 +29,3 @@ DataFrame:
 to the correct date format (MM/DD/YYYY).
 }
 }
-\examples{
-# Example usage:
-processed_df <- process_excel_sentinel(df)
-
-}

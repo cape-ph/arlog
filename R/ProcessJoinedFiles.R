@@ -11,11 +11,6 @@
 #' and uncapitalized letters in the column names.
 #'
 #' @return A data frame with modified column names: spaces replaced by underscores, hash characters replaced by 'num', and capitalized column names.
-#'
-#' @examples
-#' # Example usage:
-#' processed_df <- process_tenn_arln(tenn_arln_df)
-#'
 #' @export
 process_tenn_arln <- function(tenn_arln_df) {
   s1 <- replace_spaces_with_underscores(tenn_arln_df)
@@ -49,10 +44,6 @@ process_tenn_arln <- function(tenn_arln_df) {
 #'   \item Hyphens in the data replaced with NA.
 #'   \item Date columns converted to the format specified.
 #' }
-#'
-#' @examples
-#' # Example usage:
-#' processed_df <- process_word_alert(word_alert_df)
 #'
 #' @export
 process_word_alert <- function(word_alert_df) {
@@ -89,10 +80,6 @@ return(s5)
 #'   \item Column names cleaned and modified according to the steps outlined above.
 #'   \item Date columns converted to the format specified.
 #' }
-#'
-#' @examples
-#' # Example usage:
-#' processed_df <- process_excel_cpo(cpo_df)
 #'
 #' @export
 process_excel_cpo <- function(cpo_df) {
@@ -132,10 +119,6 @@ process_excel_cpo <- function(cpo_df) {
 #'   \item Date columns converted to the format specified (e.g., "%m/%d/%Y").
 #' }
 #'
-#' @examples
-#' # Example usage:
-#' processed_df <- process_excel_sentinel(df)
-#'
 #' @export
 process_excel_sentinel <- function(df){
   date_columns <- c("DATE_OF_BIRTH", "CULTUREDT","COLLECTIONDT")
@@ -167,10 +150,6 @@ process_excel_sentinel <- function(df){
 #'   \item Date columns converted to the format specified (e.g., "%m/%d/%Y").
 #' }
 #'
-#' @examples
-#' # Example usage:
-#' processed_df <- process_pdf_cpo_seq(df)
-#'
 #' @export
 process_pdf_cpo_seq <- function(df){
   date_columns <- c("COLLECTION_DATE")
@@ -201,11 +180,6 @@ process_pdf_cpo_seq <- function(df){
 #'   \item Column names capitalized, spaces replaced with underscores, and dots replaced with underscores.
 #'   \item Adjustments to datetime columns based on the `cut_off_time` function.
 #' }
-#'
-#' @examples
-#' # Example usage:
-#' processed_df <- process_web_portal(df)
-#'
 #' @export
 process_web_portal <- function(df){
   datetime_columns <- c("DATE_COLLECTED","DATE_RECEIVED", "DATE_RELEASED")

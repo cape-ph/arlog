@@ -38,14 +38,3 @@ combined into a single data frame. After that, the function performs a left
 join with the \code{pdf_cpo_seq_processed} data frame, based on the \code{arln_accession_id}
 and \code{date_of_collection} columns.
 }
-\examples{
-# Example usage
-processed_dfs <- list(df1, df2, df3)  # Your list of data frames
-pdf_cpo_seq <- data.frame(ACCESSION_ID = c(1, 2, 3),
-                          COLLECTION_DATE = as.Date(c("2021-01-01", "2021-01-02", "2021-01-03")))
-result <- create_arlog(CSV_OUTPUT_DIR = "output_folder", dfs_for_mod = processed_dfs, pdf_cpo_seq_processed = pdf_cpo_seq)
-
-}
-\seealso{
-\code{\link{dplyr::bind_rows}}, \code{\link{lubridate::ymd}}, \code{\link{dplyr::left_join}}
-}

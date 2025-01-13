@@ -184,24 +184,6 @@ transform_word_alert <- function(df) {
 #'
 #' @param df A dataframe containing columns related to Excel CPO data.
 #' @return A transformed dataframe with the same structure as the desired output.
-#' @examples
-#' df <- data.frame(
-#'   DESCRIPTION_OF_TESTING_COMPLETED_AND_RESULTS_(INCLUDING_ORGANISM_NAME) = c("Test1 Result1", "Test2 Result2"),
-#'   STATE_OF_SPECIMEN_ORIGIN = c("State1", "State2"),
-#'   DATE_SPECIMEN_RECEIVED = as.Date(c("2024-01-01", "2024-02-02")),
-#'   DATE_REPORTED = as.Date(c("2024-01-05", "2024-02-06")),
-#'   LAST_NAME = c("Doe", "Smith"),
-#'   FIRST_NAME = c("John", "Jane"),
-#'   DATE_OF_BIRTH = as.Date(c("1990-01-01", "1985-05-15")),
-#'   STATE_LAB_ID = c("S123", "S456"),
-#'   SPECIMEN_SOURCE = c("Blood", "Saliva"),
-#'   DATE_OF_COLLECTION_(MM/DD/YYYY) = as.Date(c("2024-01-01", "2024-02-02")),
-#'   SUBMITTING_FACILITY = c("Facility A", "Facility B"),
-#'   SAMPLE_COLLECTION_FACILITY_(IF_INCLUDED_ON_PH_4182_FORM) = c("Facility X", "Facility Y"),
-#'   KNOWN_POSITIVE_Y_N = c("Y", "N"),
-#'   DETECTED_DURING_COLONIZATION_SCR_Y_N = c("N", "Y")
-#' )
-#' transformed_df <- transform_excel_cpo(df)
 #' @export
 transform_excel_cpo <- function(df) {
 

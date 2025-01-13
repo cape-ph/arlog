@@ -31,8 +31,3 @@ formatting.
 \item Trims datetime columns to remove the time portion, leaving only the date.
 }
 }
-\examples{
-# Example usage:
-processed_df <- process_web_portal(df)
-
-}

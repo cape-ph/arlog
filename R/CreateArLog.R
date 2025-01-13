@@ -26,17 +26,8 @@
 #'   join with the `pdf_cpo_seq_processed` data frame, based on the `arln_accession_id`
 #'   and `date_of_collection` columns.
 #'
-#' @importFrom dplyr bind_rows
+#' @importFrom dplyr bind_rows, left_join
 #' @importFrom lubridate ymd
-#'
-#' @examples
-#' # Example usage
-#' processed_dfs <- list(df1, df2, df3)  # Your list of data frames
-#' pdf_cpo_seq <- data.frame(ACCESSION_ID = c(1, 2, 3),
-#'                           COLLECTION_DATE = as.Date(c("2021-01-01", "2021-01-02", "2021-01-03")))
-#' result <- create_arlog(CSV_OUTPUT_DIR = "output_folder", dfs_for_mod = processed_dfs, pdf_cpo_seq_processed = pdf_cpo_seq)
-#'
-#' @seealso \code{\link{dplyr::bind_rows}}, \code{\link{lubridate::ymd}}, \code{\link{dplyr::left_join}}
 create_arlog <- function(CSV_OUTPUT_DIR, dfs_for_mod, pdf_cpo_seq_processed) {
 
   dfs = process_dates(dfs_for_mod)
@@ -53,7 +44,7 @@ create_arlog <- function(CSV_OUTPUT_DIR, dfs_for_mod, pdf_cpo_seq_processed) {
 
   # Perform the left join between combined_df and pdf_cpo
   joined_df <- combined_df %>%
-    left_join(pdf_cpo, by = c("arln_accession_id" = "ACCESSION_ID",
+    dplyr::left_join(pdf_cpo, by = c("arln_accession_id" = "ACCESSION_ID",
                               "date_of_collection" = "COLLECTION_DATE"))
 
   return(joined_df)

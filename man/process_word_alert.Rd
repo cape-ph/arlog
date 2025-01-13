@@ -32,8 +32,3 @@ with \code{NA}.
 character to Date type using the specified date format (\verb{\%m-\%d-\%Y}).
 }
 }
-\examples{
-# Example usage:
-processed_df <- process_word_alert(word_alert_df)
-
-}

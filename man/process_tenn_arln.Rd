@@ -22,8 +22,3 @@ transformations:
 \item Capitalizes all column names.
 }
 }
-\examples{
-# Example usage:
-processed_df <- process_tenn_arln(tenn_arln_df)
-
-}

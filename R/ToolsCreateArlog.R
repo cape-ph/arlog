@@ -11,17 +11,6 @@
 #'
 #' @return A list of data frames with the `date_of_birth` and `date_of_collection` columns
 #'   converted to Date format. The input list is modified in place.
-#'
-#' @examples
-#' # Example usage with a list of data frames
-#' dataframes <- list(ta, wa, ecp, esp, ewp)
-#' processed_dataframes <- process_dates(dataframes)
-#'
-#' # Access processed data frames
-#' processed_dataframes[[1]]  # ta
-#' processed_dataframes[[2]]  # wa
-#'
-#' @seealso \code{\link{as.Date}}, \code{\link{bind_rows}}
 process_dates <- function(dataframes) {
   # Loop through each dataframe in the list
   for (i in seq_along(dataframes)) {

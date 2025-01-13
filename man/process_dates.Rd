@@ -21,16 +21,3 @@ This function takes a list of data frames and standardizes the format of the
 It ensures that all date columns in the data frames are converted to the
 specified format (\verb{\%m/\%d/\%Y}), which is typically used for mm/dd/yyyy formatted dates.
 }
-\examples{
-# Example usage with a list of data frames
-dataframes <- list(ta, wa, ecp, esp, ewp)
-processed_dataframes <- process_dates(dataframes)
-
-# Access processed data frames
-processed_dataframes[[1]]  # ta
-processed_dataframes[[2]]  # wa
-
-}
-\seealso{
-\code{\link{as.Date}}, \code{\link{bind_rows}}
-}

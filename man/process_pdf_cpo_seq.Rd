@@ -31,8 +31,3 @@ DataFrame:
 (MM/DD/YYYY).
 }
 }
-\examples{
-# Example usage:
-processed_df <- process_pdf_cpo_seq(df)
-
-}

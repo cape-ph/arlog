@@ -19,9 +19,3 @@ NULL This function writes the CSVs to the provided directory but does not return
 \description{
 This function takes a list of data frames and a corresponding list of filenames, then writes each data frame to a CSV file with the provided filenames.
 }
-\examples{
-dfs <- list(df1, df2, df3)  # List of data frames
-filenames <- c("file1.csv", "file2.csv", "file3.csv")  # Corresponding filenames
-write_dfs_to_csv(dfs, "output_directory", filenames)
-
-}
