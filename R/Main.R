@@ -7,7 +7,7 @@ WORD_ALERT_DIR = "/Users/edonate3/Documents/CAPE/HAI_Data/WordAlert"
 
 CSV_OUTPUT_DIR = "/Users/edonate3/Documents/CAPE/HAI_Processed/"
 
-export_data <- function(CSV_OUTPUT_DIR, create_arlog_flag = False) {
+export_data <- function(CSV_OUTPUT_DIR, create_arlog_flag = FALSE) {
   tenn_arln_df <- create_tenn_arln(PDF_ARLN_DIR)
   word_alert_df <- create_word_alert(WORD_ALERT_DIR)
   cpo_df <- create_excel_cpo(EXCEL_CPO_DIR)

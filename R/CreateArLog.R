@@ -26,7 +26,7 @@
 #'   join with the `pdf_cpo_seq_processed` data frame, based on the `arln_accession_id`
 #'   and `date_of_collection` columns.
 #'
-#' @importFrom dplyr bind_rows, left_join
+#' @importFrom dplyr bind_rows, left_join, na_if
 #' @importFrom lubridate ymd
 create_arlog <- function(CSV_OUTPUT_DIR, dfs_for_mod, pdf_cpo_seq_processed) {
 
@@ -36,7 +36,7 @@ create_arlog <- function(CSV_OUTPUT_DIR, dfs_for_mod, pdf_cpo_seq_processed) {
 
   combined_df <- combined_df %>%
     mutate(date_of_collection = as.character(date_of_collection)) %>%  # Ensure it's character
-    mutate(date_of_collection = na_if(date_of_collection, 'NA')) %>%  # Replace 'NA' with NA
+    mutate(date_of_collection = dplyr::na_if(date_of_collection, 'NA')) %>%  # Replace 'NA' with NA
     mutate(date_of_collection = lubridate::ymd(combined_df$date_of_collection))  # Convert to Date
 
   pdf_cpo <- pdf_cpo_seq_processed %>%
