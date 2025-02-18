@@ -58,5 +58,3 @@ export_data <- function(CSV_OUTPUT_DIR, create_arlog_flag = FALSE) {
 
   }
 }
-
-
